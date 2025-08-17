@@ -21,7 +21,7 @@ export default function Navbar() {
           </Link>
 
           {/* Search bar (desktop) */}
-          <div className="hidden md:flex flex-1 justify-center px-4">
+          {/* <div className="hidden md:flex flex-1 justify-center px-4">
             <div className="relative w-full max-w-md">
               <input
                 type="text"
@@ -35,7 +35,7 @@ export default function Navbar() {
                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
               />
             </div>
-          </div>
+          </div> */}
 
           {/* Right section */}
           <div className="flex items-center gap-4">
@@ -77,7 +77,7 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white px-4 pb-4 space-y-4 shadow">
           {/* Search (mobile) */}
-          <div className="relative">
+          {/* <div className="relative">
             <input
               type="text"
               placeholder="Search products..."
@@ -89,7 +89,7 @@ export default function Navbar() {
               size={18}
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
             />
-          </div>
+          </div> */}
 
           {/* Store link */}
           <Link
