@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState } from "react";
 import { useCart } from "@/context/CartContext.jsx";
@@ -197,10 +198,9 @@ export default function StorePage() {
       image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500",
       price: 150,
     },
-  ];
+  ]
 
   const categories = ["All", ...new Set(products.map((p) => p.category))];
-
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredProducts =
@@ -214,10 +214,28 @@ export default function StorePage() {
         Store
       </h1>
 
-      <div className="flex gap-8">
-        {/* Categories Sidebar */}
-        <div className="w-48 flex-shrink-0">
-          <div className="flex flex-col gap-3">
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* Categories */}
+        <div className="md:w-48 flex-shrink-0">
+          {/* Mobile: horizontal scroll */}
+          <div className="flex md:hidden gap-3 overflow-x-auto pb-3">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-4 py-2 rounded-lg border whitespace-nowrap ${
+                  selectedCategory === cat
+                    ? "bg-blue-600 text-white"
+                    : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Desktop: vertical sidebar */}
+          <div className="hidden md:flex flex-col gap-3">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -236,7 +254,7 @@ export default function StorePage() {
 
         {/* Product Listing */}
         <div className="flex-grow">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {filteredProducts.map((product) => (
               <ProductBox
                 key={product.id}
